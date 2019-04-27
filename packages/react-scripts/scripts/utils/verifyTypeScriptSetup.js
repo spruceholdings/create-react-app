@@ -128,6 +128,18 @@ function verifyTypeScriptSetup() {
       reason: 'JSX is compiled by Babel',
     },
     paths: { value: undefined, reason: 'aliased imports are not supported' },
+
+    //These values are specific to Spruce UI best practices
+    noImplicitReturns: { suggested: true },
+    noUnusedLocals: { suggested: true },
+    rootDir: { suggested: 'src'},
+    suppressImplicitAnyIndexErrors: { suggested: true},
+    typeRoots: {
+      suggested: [
+        "./node_modules/@types",
+        "./src/@types"
+      ]
+    }
   };
 
   const formatDiagnosticHost = {
@@ -181,7 +193,7 @@ function verifyTypeScriptSetup() {
         )
       );
     }
-    
+
     console.log(e && e.message ? `${e.message}` : '');
     process.exit(1);
   }
