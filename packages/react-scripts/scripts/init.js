@@ -22,6 +22,8 @@ const spawn = require('react-dev-utils/crossSpawn');
 const { defaultBrowsers } = require('react-dev-utils/browsersHelper');
 const os = require('os');
 const verifyTypeScriptSetup = require('./utils/verifyTypeScriptSetup');
+const installSpruceUiDependencies = require('./utils/installSpruceUiDependencies');
+const installSpruceUiPeerDependencies = require('./utils/installSpruceUiPeerDependencies');
 
 function isInGitRepository() {
   try {
@@ -73,30 +75,6 @@ function tryGitInit(appPath) {
     }
     return false;
   }
-}
-
-function installSpruceUiDependencies(useYarn, verbose) {
-
-  let command;
-  let args;
-
-  if (useYarn) {
-    command = 'yarnpkg';
-    args = ['add'];
-  } else {
-    command = 'npm';
-    args = ['install', '--save', verbose && '--verbose'].filter(e => e);
-  }
-  args.push('enzyme', 'mobx', 'mobx-react', 'prettier', 'ui-toolkit');
-
-  console.log(`Installing Spruce UI dependencies using ${command}...`);
-  console.log();
-
-  const proc = spawn.sync(command, args, { stdio: 'inherit' });
-  if (proc.status !== 0) {
-    console.error(`\`${command} ${args.join(' ')}\` failed`);
-  }
-  return proc.status;
 }
 
 module.exports = function(
@@ -219,13 +197,18 @@ module.exports = function(
     }
   }
 
-  const spruceUiDependenciesInstallStatus = installSpruceUiDependencies(useYarn, verbose);
-  if (spruceUiDependenciesInstallStatus !== 0) {
+  if (useTypeScript) {
+    verifyTypeScriptSetup();
+  }
+
+  const installSpruceUiDependenciesStatus = installSpruceUiDependencies(useYarn, verbose);
+  if (installSpruceUiDependenciesStatus !== 0) {
     return;
   }
 
-  if (useTypeScript) {
-    verifyTypeScriptSetup();
+  const installSpruceUiPeerDependenciesStatus = installSpruceUiPeerDependencies(useYarn, verbose);
+  if (installSpruceUiPeerDependenciesStatus !== 0) {
+    return;
   }
 
   if (tryGitInit(appPath)) {
