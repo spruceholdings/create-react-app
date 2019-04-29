@@ -95,9 +95,8 @@ function installSpruceUiDependencies(useYarn, verbose) {
   const proc = spawn.sync(command, args, { stdio: 'inherit' });
   if (proc.status !== 0) {
     console.error(`\`${command} ${args.join(' ')}\` failed`);
-    return;
   }
-
+  return proc.status;
 }
 
 module.exports = function(
@@ -220,7 +219,10 @@ module.exports = function(
     }
   }
 
-  installSpruceUiDependencies(useYarn, verbose);
+  const spruceUiDependenciesInstallStatus = installSpruceUiDependencies(useYarn, verbose);
+  if (spruceUiDependenciesInstallStatus !== 0) {
+    return;
+  }
 
   if (useTypeScript) {
     verifyTypeScriptSetup();
