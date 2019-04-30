@@ -130,6 +130,7 @@ function verifyTypeScriptSetup() {
     paths: { value: undefined, reason: 'aliased imports are not supported' },
 
     //These values are specific to Spruce UI best practices
+    experimentalDecorators: { suggested: true },
     noImplicitReturns: { suggested: true },
     noUnusedLocals: { suggested: true },
     rootDir: { suggested: 'src'},
@@ -260,6 +261,14 @@ function verifyTypeScriptSetup() {
       });
       console.warn();
     }
+    //alphabetize options before writing them back
+    appTsConfig.compilerOptions = Object
+      .keys(appTsConfig.compilerOptions)
+      .sort()
+      .reduce((obj, key) => {
+        obj[key] = appTsConfig.compilerOptions[key];
+        return obj;
+      }, {});
     writeJson(paths.appTsConfig, appTsConfig);
   }
 
