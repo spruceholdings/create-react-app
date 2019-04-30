@@ -1,4 +1,5 @@
 const spawn = require('react-dev-utils/crossSpawn');
+const spruceUiDependencies = ['enzyme', 'mobx', 'mobx-react', 'prettier', 'ui-toolkit'];
 
 function installSpruceUiDependencies(useYarn, verbose) {
 
@@ -12,7 +13,7 @@ function installSpruceUiDependencies(useYarn, verbose) {
     command = 'npm';
     args = ['install', '--save', verbose && '--verbose'].filter(e => e);
   }
-  args.push('enzyme', 'mobx', 'mobx-react', 'prettier', 'ui-toolkit');
+  args = args.concat(spruceUiDependencies);
 
   console.log(`Installing Spruce UI dependencies using ${command}...`);
   console.log();
