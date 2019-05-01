@@ -1,8 +1,8 @@
 const spawn = require('react-dev-utils/crossSpawn');
 
-function installSpruceUiPeerDependencies(useYarn, verbose) {
+function installSpruceSpaPeerDependencies(useYarn, verbose) {
   if (useYarn) {
-    console.error('yarn is not supported in Spruce UI install');
+    console.error('yarn is not supported in Spruce SPA install');
     return 601;//useYarn is not supported
   }
   let command = 'npm';
@@ -34,4 +34,4 @@ function installSpruceUiPeerDependencies(useYarn, verbose) {
   return undefined;
 }
 
-module.exports = installSpruceUiPeerDependencies;
+module.exports = installSpruceSpaPeerDependencies;

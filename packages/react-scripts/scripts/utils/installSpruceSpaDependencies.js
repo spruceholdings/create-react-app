@@ -1,7 +1,7 @@
 const spawn = require('react-dev-utils/crossSpawn');
-const spruceUiDependencies = ['enzyme', 'mobx', 'mobx-react', 'prettier', 'ui-toolkit@pre'];
+const spruceSpaDependencies = ['enzyme', 'mobx', 'mobx-react', 'prettier', 'ui-toolkit@pre'];
 
-function installSpruceUiDependencies(useYarn, verbose) {
+function installSpruceSpaDependencies(useYarn, verbose) {
 
   let command;
   let args;
@@ -13,9 +13,9 @@ function installSpruceUiDependencies(useYarn, verbose) {
     command = 'npm';
     args = ['install', '--save', verbose && '--verbose'].filter(e => e);
   }
-  args = args.concat(spruceUiDependencies);
+  args = args.concat(spruceSpaDependencies);
 
-  console.log(`Installing Spruce UI dependencies using ${command}...`);
+  console.log(`Installing Spruce SPA dependencies using ${command}...`);
   console.log();
 
   const proc = spawn.sync(command, args, { stdio: 'inherit' });
@@ -25,4 +25,4 @@ function installSpruceUiDependencies(useYarn, verbose) {
   return proc.status;
 }
 
-module.exports = installSpruceUiDependencies;
+module.exports = installSpruceSpaDependencies;

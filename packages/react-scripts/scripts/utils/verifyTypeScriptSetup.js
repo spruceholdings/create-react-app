@@ -129,7 +129,7 @@ function verifyTypeScriptSetup() {
     },
     paths: { value: undefined, reason: 'aliased imports are not supported' },
 
-    //These values are specific to Spruce UI best practices
+    //These values are specific to Spruce best practices
     experimentalDecorators: { suggested: true },
     noImplicitReturns: { suggested: true },
     noUnusedLocals: { suggested: true },

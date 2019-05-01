@@ -22,8 +22,8 @@ const spawn = require('react-dev-utils/crossSpawn');
 const { defaultBrowsers } = require('react-dev-utils/browsersHelper');
 const os = require('os');
 const verifyTypeScriptSetup = require('./utils/verifyTypeScriptSetup');
-const installSpruceUiDependencies = require('./utils/installSpruceUiDependencies');
-const installSpruceUiPeerDependencies = require('./utils/installSpruceUiPeerDependencies');
+const installSpruceSpaDependencies = require('./utils/installSpruceSpaDependencies');
+const installSpruceSpaPeerDependencies = require('./utils/installSpruceSpaPeerDependencies');
 
 function isInGitRepository() {
   try {
@@ -201,13 +201,13 @@ module.exports = function(
     verifyTypeScriptSetup();
   }
 
-  const installSpruceUiDependenciesStatus = installSpruceUiDependencies(useYarn, verbose);
-  if (installSpruceUiDependenciesStatus !== 0) {
+  const installSpruceSpaDependenciesStatus = installSpruceSpaDependencies(useYarn, verbose);
+  if (installSpruceSpaDependenciesStatus !== 0) {
     return;
   }
 
-  const installSpruceUiPeerDependenciesStatus = installSpruceUiPeerDependencies(useYarn, verbose);
-  if (installSpruceUiPeerDependenciesStatus !== 0) {
+  const installSpruceSpaPeerDependenciesStatus = installSpruceSpaPeerDependencies(useYarn, verbose);
+  if (installSpruceSpaPeerDependenciesStatus !== 0) {
     return;
   }
 
