@@ -53,11 +53,6 @@ const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
-//inline svg regexes
-const svgRegex = /\.svg$/;
-const svgIssuerRegex = /\.[jt]?sx?$/;
-const svgUrlRegex = /\.svg(\?v=\d+\.\d+\.\d+)?$/;
-
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function(webpackEnv) {
@@ -505,28 +500,6 @@ module.exports = function(webpackEnv) {
                 },
                 'sass-loader'
               ),
-            },
-            {
-              test: svgRegex,
-              issuer: {
-                test: svgIssuerRegex
-              },
-              use: [
-                {
-                  loader: '@svgr/webpack',
-                },
-                {
-                  loader: require.resolve('url-loader'),
-                  options: {
-                    limit: 10000,
-                    name: 'static/media/[name].[hash:8].[ext]',
-                  },
-                }
-              ]
-            },
-            {
-              test: svgUrlRegex,
-              loader: 'url-loader'
             },
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.
