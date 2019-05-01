@@ -6,7 +6,7 @@ function installSpruceUiPeerDependencies(useYarn, verbose) {
     return 601;//useYarn is not supported
   }
   let command = 'npm';
-  let args = ['view', 'ui-toolkit', 'peerDependencies', '-json', verbose && '--verbose'].filter(e => e);
+  let args = ['view', 'ui-toolkit@pre', 'peerDependencies', '-json', verbose && '--verbose'].filter(e => e);
 
   console.log(`Installing UI Toolkit peer dependencies using ${command}...`);
   console.log();
