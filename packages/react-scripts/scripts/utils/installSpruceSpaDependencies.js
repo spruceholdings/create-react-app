@@ -1,5 +1,12 @@
 const spawn = require('react-dev-utils/crossSpawn');
-const spruceSpaDependencies = ['enzyme', 'mobx', 'mobx-react', 'prettier', 'ui-toolkit@pre'];
+const spruceSpaDependencies = [
+  '@types/enzyme',
+  'enzyme',
+  'mobx',
+  'mobx-react',
+  'prettier',
+  'ui-toolkit@pre'
+];
 
 function installSpruceSpaDependencies(useYarn, verbose) {
 
