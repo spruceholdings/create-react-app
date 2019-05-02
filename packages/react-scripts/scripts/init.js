@@ -23,7 +23,6 @@ const { defaultBrowsers } = require('react-dev-utils/browsersHelper');
 const os = require('os');
 const verifyTypeScriptSetup = require('./utils/verifyTypeScriptSetup');
 const installSpruceSpaDependencies = require('./utils/installSpruceSpaDependencies');
-const installSpruceSpaPeerDependencies = require('./utils/installSpruceSpaPeerDependencies');
 
 function isInGitRepository() {
   try {
@@ -203,11 +202,6 @@ module.exports = function(
 
   const installSpruceSpaDependenciesStatus = installSpruceSpaDependencies(useYarn, verbose);
   if (installSpruceSpaDependenciesStatus !== 0) {
-    return;
-  }
-
-  const installSpruceSpaPeerDependenciesStatus = installSpruceSpaPeerDependencies(useYarn, verbose);
-  if (installSpruceSpaPeerDependenciesStatus !== 0) {
     return;
   }
 

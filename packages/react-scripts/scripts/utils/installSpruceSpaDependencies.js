@@ -5,10 +5,14 @@ const spruceSpaDependencies = [
   'mobx',
   'mobx-react',
   'prettier',
-  'ui-toolkit'
+  'ui-toolkit',
 ];
+const getSpruceSpaPeerDependencies = require('./getSpruceSpaPeerDependencies.js');
 
 function installSpruceSpaDependencies(useYarn, verbose) {
+
+  console.log(`Creating Spruce SPA dependencies list...`);
+  console.log();
 
   let command;
   let args;
@@ -21,6 +25,14 @@ function installSpruceSpaDependencies(useYarn, verbose) {
     args = ['install', '--save', verbose && '--verbose'].filter(e => e);
   }
   args = args.concat(spruceSpaDependencies);
+
+  const spruceSpaPeerDependenciesStatusOrArray = getSpruceSpaPeerDependencies(useYarn, verbose);
+
+  if (Array.isArray(spruceSpaPeerDependenciesStatusOrArray)) {
+    args = args.concat(spruceSpaPeerDependenciesStatusOrArray);
+  } else {
+    return spruceSpaPeerDependenciesStatusOrArray;
+  }
 
   console.log(`Installing Spruce SPA dependencies using ${command}...`);
   console.log();
