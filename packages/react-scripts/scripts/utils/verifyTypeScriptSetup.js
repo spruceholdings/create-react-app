@@ -276,7 +276,7 @@ function verifyTypeScriptSetup() {
   if (!fs.existsSync(paths.appTypeDeclarations)) {
     fs.writeFileSync(
       paths.appTypeDeclarations,
-      `/// <reference types="spruce-ui-react-scripts" />${os.EOL}`
+      `/// <reference types="spruce-spa-react-scripts" />${os.EOL}`
     );
   }
 }
