@@ -5,7 +5,7 @@ const spruceSpaDependencies = [
   'mobx',
   'mobx-react',
   'prettier',
-  'ui-toolkit@pre'
+  'ui-toolkit'
 ];
 
 function installSpruceSpaDependencies(useYarn, verbose) {
