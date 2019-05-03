@@ -1,3 +1,19 @@
+# Create React App & Spruce SPA React Scripts
+
+This repo is a fork of Create React App. Always update this with upstream releases of `facebook/create-react-app`.
+
+To start a new app:
+
+```sh
+npx create-react-app my-app --scripts-version spruce-spa-react-scripts --typescript
+```
+
+The `--scripts-version` option is set to our custom implementation of `react-scripts`. This is is a dependency that will be update regularly.
+
+We aren't using a custom implementation of `create-react-app`. It's unnecessary.
+
+Always set the `--typesrcipt` flag. We don't make React SPAs without Typescript.
+
 # Create React App [![Build Status](https://travis-ci.org/facebook/create-react-app.svg?branch=master)](https://travis-ci.org/facebook/create-react-app) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/facebook/create-react-app/pulls)
 
 Create React apps with no build configuration.
