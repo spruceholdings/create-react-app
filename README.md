@@ -12,7 +12,7 @@ The `--scripts-version` option is set to our custom implementation of `react-scr
 
 We aren't using a custom implementation of `create-react-app`. It's unnecessary.
 
-Always set the `--typesrcipt` flag. We don't make React SPAs without Typescript.
+Always set the `--typescript` flag. We don't make React SPAs without Typescript.
 
 # Create React App [![Build Status](https://travis-ci.org/facebook/create-react-app.svg?branch=master)](https://travis-ci.org/facebook/create-react-app) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/facebook/create-react-app/pulls)
 
