@@ -2,10 +2,13 @@ const spawn = require('react-dev-utils/crossSpawn');
 const spruceSpaDependencies = [
   '@types/enzyme',
   'enzyme',
+  'enzyme-adapter-react-16',
+  'jest-enzyme',
   'mobx',
   'mobx-react',
   'prettier',
-  'ui-toolkit',
+  'react-test-renderer',
+  'ui-toolkit'
 ];
 const getSpruceSpaPeerDependencies = require('./getSpruceSpaPeerDependencies.js');
 
