@@ -6,6 +6,7 @@ const spruceSpaDependencies = [
   'jest-enzyme',
   'mobx',
   'mobx-react',
+  'node-sass',
   'prettier',
   'react-test-renderer',
   'ui-toolkit'
