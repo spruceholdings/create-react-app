@@ -86,7 +86,7 @@ module.exports = {
   appTsConfig: resolveApp('tsconfig.json'),
   appJsConfig: resolveApp('jsconfig.json'),
   appUIToolkit: resolveApp('node_modules/ui-toolkit'),
-  appSprucePackages: resolveApp('node_modules/@spruce/**/src'),
+  appSprucePackages: resolveApp('node_modules/@spruce'),
   yarnLockFile: resolveApp('yarn.lock'),
   testsSetup: resolveModule(resolveApp, 'src/setupTests'),
   proxySetup: resolveApp('src/setupProxy.js'),
