@@ -28,7 +28,8 @@ switch (script) {
   case 'build':
   case 'eject':
   case 'start':
-  case 'test': {
+  case 'test':
+  case 'update-spruce-spa': {
     const result = spawn.sync(
       'node',
       nodeArgs

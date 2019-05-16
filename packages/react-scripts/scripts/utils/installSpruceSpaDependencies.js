@@ -1,5 +1,6 @@
 const spawn = require('react-dev-utils/crossSpawn');
 const spruceSpaDependencies = [
+  '@spruce/pdfjs-dist',
   '@types/enzyme',
   '@types/react-test-renderer',
   'enzyme',
@@ -9,6 +10,7 @@ const spruceSpaDependencies = [
   'mobx-react',
   'node-sass',
   'prettier',
+  'react-pdf',
   'react-test-renderer',
   'ui-toolkit'
 ];

@@ -283,6 +283,9 @@ module.exports = function(webpackEnv) {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',
+        // Fork pdf.js and remove fallback worker logic since it's incompatible with CRA's
+        // disabling of require.ensure
+        'pdfjs-dist': '@spruce/pdfjs-dist',
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
@@ -651,6 +654,12 @@ module.exports = function(webpackEnv) {
           // The formatter is invoked directly in WebpackDevServerUtils during development
           formatter: isEnvProduction ? typescriptFormatter : undefined,
         }),
+      new CopyWebpackPlugin([
+        {
+          from: 'node_modules/@spruce/pdfjs-dist/build/pdf.worker.js',
+          to: 'pdf.worker.js'
+        },
+      ]),
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
     // Tell Webpack to provide empty mocks for them so importing them works.
