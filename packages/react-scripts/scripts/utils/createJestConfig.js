@@ -47,7 +47,7 @@ module.exports = (resolve, rootDir, isEjecting) => {
       ),
     },
     transformIgnorePatterns: [
-      '[/\\\\]node_modules[/\\\\](?!ui-toolkit[/\\\\]).+\\.(js|jsx|ts|tsx)$',
+      '[/\\\\]node_modules[/\\\\](?!@spruce[/\\])(?!ui-toolkit[/\\\\]).+\\.(js|jsx|ts|tsx)$',
       '^.+\\.module\\.(css|sass|scss)$',
     ],
     modulePaths: modules.additionalModulePaths || [],
