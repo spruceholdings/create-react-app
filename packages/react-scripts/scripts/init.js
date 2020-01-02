@@ -22,6 +22,7 @@ const spawn = require('react-dev-utils/crossSpawn');
 const { defaultBrowsers } = require('react-dev-utils/browsersHelper');
 const os = require('os');
 const verifyTypeScriptSetup = require('./utils/verifyTypeScriptSetup');
+const installSpruceSpaDependencies = require('./utils/installSpruceSpaDependencies');
 
 function isInGitRepository() {
   try {
@@ -88,6 +89,8 @@ module.exports = function(
   const appPackage = require(path.join(appPath, 'package.json'));
   const useYarn = fs.existsSync(path.join(appPath, 'yarn.lock'));
 
+  appPackage.homepage = '.';
+
   // Copy over some of the devDependencies
   appPackage.dependencies = appPackage.dependencies || {};
 
@@ -99,6 +102,7 @@ module.exports = function(
     build: 'react-scripts build',
     test: 'react-scripts test',
     eject: 'react-scripts eject',
+    'update-spruce-spa': 'react-scripts update-spruce-spa',
   };
 
   // Setup the eslint config
@@ -197,6 +201,11 @@ module.exports = function(
 
   if (useTypeScript) {
     verifyTypeScriptSetup();
+  }
+
+  const installSpruceSpaDependenciesStatus = installSpruceSpaDependencies(useYarn, verbose);
+  if (installSpruceSpaDependenciesStatus !== 0) {
+    return;
   }
 
   if (tryGitInit(appPath)) {

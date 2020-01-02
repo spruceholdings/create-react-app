@@ -128,6 +128,19 @@ function verifyTypeScriptSetup() {
       reason: 'JSX is compiled by Babel',
     },
     paths: { value: undefined, reason: 'aliased imports are not supported' },
+
+    //These values are specific to Spruce best practices
+    experimentalDecorators: { suggested: true },
+    noImplicitReturns: { suggested: true },
+    noUnusedLocals: { suggested: true },
+    rootDir: { suggested: 'src'},
+    suppressImplicitAnyIndexErrors: { suggested: true},
+    typeRoots: {
+      suggested: [
+        "./node_modules/@types",
+        "./src/@types"
+      ]
+    }
   };
 
   const formatDiagnosticHost = {
@@ -181,7 +194,7 @@ function verifyTypeScriptSetup() {
         )
       );
     }
-    
+
     console.log(e && e.message ? `${e.message}` : '');
     process.exit(1);
   }
@@ -248,6 +261,14 @@ function verifyTypeScriptSetup() {
       });
       console.warn();
     }
+    //alphabetize options before writing them back
+    appTsConfig.compilerOptions = Object
+      .keys(appTsConfig.compilerOptions)
+      .sort()
+      .reduce((obj, key) => {
+        obj[key] = appTsConfig.compilerOptions[key];
+        return obj;
+      }, {});
     writeJson(paths.appTsConfig, appTsConfig);
   }
 
@@ -255,7 +276,7 @@ function verifyTypeScriptSetup() {
   if (!fs.existsSync(paths.appTypeDeclarations)) {
     fs.writeFileSync(
       paths.appTypeDeclarations,
-      `/// <reference types="react-scripts" />${os.EOL}`
+      `/// <reference types="spruce-spa-react-scripts" />${os.EOL}`
     );
   }
 }

@@ -1,3 +1,44 @@
+# Create React App & Spruce SPA React Scripts
+
+This repo is a fork of Create React App. Always update this with upstream releases of `facebook/create-react-app`.
+
+To start a new app:
+
+```sh
+npx create-react-app my-app --scripts-version spruce-spa-react-scripts --typescript --use-npm
+```
+
+We aren't using a custom implementation of `create-react-app`. It's unnecessary.
+
+The `--scripts-version` option is set to our custom implementation of `react-scripts`. This is is a dependency that will be update regularly.
+
+Always set the `--typescript` flag. We don't make Spruce SPAs without Typescript.
+
+We force the use of npm with `--use-npm` since `spruce-spa-react-scripts` is not tested with and does not support `yarn` installs. 
+
+## Publishing Spruce SPA React Scripts
+
+Publishing is not yet automated. These are all the steps you must perform manually.
+
+- To update version:
+  ```bash
+  $ cd packages/react-scripts/
+  $ git checkout spruce-spa-react-scripts
+  $ git pull
+  $ npm --no-git-tag-version version patch
+  $ git add -A
+  $ git commit -m v1.0.0 # From npm version patch above
+  $ git push
+  $ npm publish
+  ```
+- After the publish is complete create a git tag to match what was just published
+  ```
+  $ git tag spruce-spa-react-scripts@1.0.0 # From npm version patch above
+  $ git push --tags
+  ```
+- Finally, create a release in github. (Manage releases at [Github Releases](https://github.com/spruceholdings/create-react-app/releases))
+
+
 # Create React App [![Build Status](https://travis-ci.org/facebook/create-react-app.svg?branch=master)](https://travis-ci.org/facebook/create-react-app) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/facebook/create-react-app/pulls)
 
 Create React apps with no build configuration.
