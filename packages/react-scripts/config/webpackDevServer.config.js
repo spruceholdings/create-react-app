@@ -20,6 +20,14 @@ const host = process.env.HOST || '0.0.0.0';
 
 module.exports = function(proxy, allowedHost) {
   return {
+    // Headers are added for CORS, so that React Mini Pieces' asset-manifest.json can be loaded without
+    //  a Rails server call. Only allowing the methods and headers that are required
+    //  for the call to work.
+    headers:{
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET",
+      "Access-Control-Allow-Headers": "content-type"
+    },
     // WebpackDevServer 2.4.3 introduced a security fix that prevents remote
     // websites from potentially accessing local content through DNS rebinding:
     // https://github.com/webpack/webpack-dev-server/issues/887
